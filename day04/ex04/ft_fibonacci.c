@@ -6,7 +6,7 @@
 /*   By: gchojnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 10:55:45 by gchojnac          #+#    #+#             */
-/*   Updated: 2017/07/13 11:39:14 by gchojnac         ###   ########.fr       */
+/*   Updated: 2017/07/11 12:43:42 by gchojnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@ int		ft_fibonacci(int index)
 {
 	int	res;
 
-	if (index < 0)
-		return (-1);
 	if (index == 0)
 		return (0);
 	if (index == 1)

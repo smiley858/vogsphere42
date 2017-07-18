@@ -6,7 +6,7 @@
 /*   By: gchojnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 14:30:07 by gchojnac          #+#    #+#             */
-/*   Updated: 2017/07/16 19:57:43 by gchojnac         ###   ########.fr       */
+/*   Updated: 2017/07/11 17:07:13 by gchojnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		ft_is_prime(int nb)
 	i = 5;
 	if (nb == 2)
 		return (1);
-	if (nb <= 0 || nb == 1 || nb % 2 == 0)
+	if (nb == 0 || nb == 1 || nb % 2 == 0)
 		return (0);
 	else if (nb % 2 == 0 || nb % 3 == 0)
 		return (0);

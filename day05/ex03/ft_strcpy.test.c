@@ -6,7 +6,7 @@
 /*   By: gchojnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/12 19:25:49 by gchojnac          #+#    #+#             */
-/*   Updated: 2017/07/17 11:25:47 by gchojnac         ###   ########.fr       */
+/*   Updated: 2017/07/12 21:19:58 by gchojnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		main(void)
 	char c1[8] = "bonjour";
 	char c2[8] = "bonjour";
 
-	printf("%s\n", strcpy(c2, "hello"));
+	printf("%s\n", strncpy(c2, "hello", 2));
 	printf("%s\n", ft_strcpy(c1, "hello"));
 	return(0);
 }

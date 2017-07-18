@@ -6,23 +6,24 @@
 /*   By: gchojnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 12:48:12 by gchojnac          #+#    #+#             */
-/*   Updated: 2017/07/17 10:46:07 by gchojnac         ###   ########.fr       */
+/*   Updated: 2017/07/12 18:35:03 by gchojnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_sqrt(int nb)
 {
-	int	search;
+	float		guess[2];
 
-	search = 0;
-	if (nb < 0)
-		return (0);
-	else
+	guess[0] = nb / 2;
+	guess[1] = 0.5 * (guess[0] + (nb / guess[0]));
+	if (guess[0] != guess[1])
 	{
-		while (search * search < nb)
+		while (guess[1] != guess[0])
 		{
-			search++;
+			guess[1] = 0.5 * (guess[0] + (nb / guess[0]));
+			guess[0] = guess[1];
+			guess[1] = 0.5 * (guess[0] + (nb / guess[0]));
 		}
-		return ((search * search == nb) ? search : 0);
 	}
+	return (guess[0]);
 }

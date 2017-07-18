@@ -6,7 +6,7 @@
 /*   By: gchojnac <gchojnac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/10 21:41:51 by gchojnac          #+#    #+#             */
-/*   Updated: 2017/07/16 19:52:57 by gchojnac         ###   ########.fr       */
+/*   Updated: 2017/07/11 18:24:32 by gchojnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 int		ft_iterative_factorial(int nb)
 {
+	int mem;
 	int returned;
 
 	returned = nb;
-	if (nb > 0 && nb < 13)
+	if (nb > 0)
 	{
 		while (nb > 0)
 		{
@@ -36,10 +37,6 @@ int		ft_iterative_factorial(int nb)
 
 int		main(void)
 {
-	printf("%d\n", ft_iterative_factorial(-99));
-	printf("%d\n", ft_iterative_factorial(18));
-	printf("%d\n", ft_iterative_factorial(0));
-	printf("%d\n", ft_iterative_factorial(1));
-	printf("%d\n", ft_iterative_factorial(2));
+	printf("%d", ft_iterative_factorial(8));
 	return (0);
 }
