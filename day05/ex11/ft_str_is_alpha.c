@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gchojnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/11 14:30:07 by gchojnac          #+#    #+#             */
-/*   Updated: 2017/07/16 19:57:43 by gchojnac         ###   ########.fr       */
+/*   Created: 2017/07/17 15:06:26 by gchojnac          #+#    #+#             */
+/*   Updated: 2017/07/17 15:16:26 by gchojnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_is_prime(int nb)
+int	ft_str_is_alpha(char *str)
 {
-	int i;
+	int index;
 
-	i = 5;
-	if (nb == 2)
-		return (1);
-	if (nb <= 0 || nb == 1 || nb % 2 == 0)
-		return (0);
-	else if (nb % 2 == 0 || nb % 3 == 0)
-		return (0);
-	while (i * i <= nb)
+	index = 0;
+	while (str[index] != 0)
 	{
-		if (nb == 2147483647)
-			return (1);
-		if (nb % i == 0 || nb % (i + 2) == 0)
+		if (!(str[index] >= 'A' && str[index] <= 'Z')
+				&& !(str[index] >= 'a' && str[index] <= 'z'))
 			return (0);
-		i += 6;
+		index++;
 	}
 	return (1);
 }

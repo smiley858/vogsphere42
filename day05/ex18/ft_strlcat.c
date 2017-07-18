@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gchojnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/11 14:30:07 by gchojnac          #+#    #+#             */
-/*   Updated: 2017/07/16 19:57:43 by gchojnac         ###   ########.fr       */
+/*   Created: 2017/07/17 18:24:53 by gchojnac          #+#    #+#             */
+/*   Updated: 2017/07/18 00:12:16 by gchojnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_is_prime(int nb)
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	int i;
+	char	*d;
+	char	*s;
+	int		n;
+	int		rst;
 
-	i = 5;
-	if (nb == 2)
-		return (1);
-	if (nb <= 0 || nb == 1 || nb % 2 == 0)
-		return (0);
-	else if (nb % 2 == 0 || nb % 3 == 0)
-		return (0);
-	while (i * i <= nb)
+	d = dest;
+	s = src;
+	n = size;
+	while (n-- != 0 && *d != '\0')
+		d++;
+	rst = d - dest;
+	n = size - rst;
+	if (n == 0)
+		return (rst + strlen(s));
+	while (*s != '\0')
 	{
-		if (nb == 2147483647)
-			return (1);
-		if (nb % i == 0 || nb % (i + 2) == 0)
-			return (0);
-		i += 6;
+		if (n != 1)
+		{
+			*d++ = *s;
+			n--;
+		}
+		s++;
 	}
-	return (1);
+	*d = '\0';
+	return (rst + (s - src));
 }

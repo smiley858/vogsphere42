@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gchojnac <gchojnac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gchojnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/10 21:41:51 by gchojnac          #+#    #+#             */
-/*   Updated: 2017/07/12 18:14:28 by gchojnac         ###   ########.fr       */
+/*   Created: 2017/07/17 14:31:25 by gchojnac          #+#    #+#             */
+/*   Updated: 2017/07/17 14:38:02 by gchojnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_iterative_factorial(int nb)
-{
-	int returned;
+#include <stdio.h>
 
-	returned = nb;
-	if (nb > 0)
+#include "ft_strupcase.c"
+
+int		main(int argc, char **argv)
+{
+	if (argc != 2)
+		printf("usage: ./a.out \"string\"\n");
+	else
 	{
-		while (nb > 0)
-		{
-			nb--;
-			if (nb != 0)
-				returned = returned * nb;
-		}
-		return (returned);
+		printf("%s\n",ft_strupcase(argv[1]));
 	}
 	return (0);
 }

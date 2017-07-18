@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gchojnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/11 14:30:07 by gchojnac          #+#    #+#             */
-/*   Updated: 2017/07/16 19:57:43 by gchojnac         ###   ########.fr       */
+/*   Created: 2017/07/11 12:48:12 by gchojnac          #+#    #+#             */
+/*   Updated: 2017/07/13 14:32:40 by gchojnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_is_prime(int nb)
+int		ft_sqrt(int nb)
 {
-	int i;
+	float		guess[2];
 
-	i = 5;
-	if (nb == 2)
-		return (1);
-	if (nb <= 0 || nb == 1 || nb % 2 == 0)
+	if (nb < 0)
 		return (0);
-	else if (nb % 2 == 0 || nb % 3 == 0)
-		return (0);
-	while (i * i <= nb)
+	else
 	{
-		if (nb == 2147483647)
-			return (1);
-		if (nb % i == 0 || nb % (i + 2) == 0)
-			return (0);
-		i += 6;
+		guess[0] = nb / 2;
+		guess[1] = 0.5 * (guess[0] + (nb / guess[0]));
+		if (guess[0] != guess[1])
+		{
+			while (guess[1] != guess[0])
+			{
+				guess[1] = 0.5 * (guess[0] + (nb / guess[0]));
+				guess[0] = guess[1];
+				guess[1] = 0.5 * (guess[0] + (nb / guess[0]));
+			}
+		}
+		return (((int)guess[0] * (int)guess[0] == nb) ? guess[0] : 0);
 	}
-	return (1);
 }

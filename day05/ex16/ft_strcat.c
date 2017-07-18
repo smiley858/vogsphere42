@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gchojnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/11 14:30:07 by gchojnac          #+#    #+#             */
-/*   Updated: 2017/07/16 19:57:43 by gchojnac         ###   ########.fr       */
+/*   Created: 2017/07/17 18:07:38 by gchojnac          #+#    #+#             */
+/*   Updated: 2017/07/18 00:09:57 by gchojnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_is_prime(int nb)
+char	*ft_strcat(char *dest, char *src)
 {
-	int i;
+	int size_dest;
+	int size_src;
 
-	i = 5;
-	if (nb == 2)
-		return (1);
-	if (nb <= 0 || nb == 1 || nb % 2 == 0)
-		return (0);
-	else if (nb % 2 == 0 || nb % 3 == 0)
-		return (0);
-	while (i * i <= nb)
+	size_dest = 0;
+	size_src = 0;
+	while (dest[size_dest] != '\0')
+		size_dest++;
+	while (src[size_src] != '\0')
 	{
-		if (nb == 2147483647)
-			return (1);
-		if (nb % i == 0 || nb % (i + 2) == 0)
-			return (0);
-		i += 6;
+		dest[size_dest + size_src] = src[size_src];
+		size_src++;
 	}
-	return (1);
+	dest[size_dest + size_src] = '\0';
+	return (dest);
 }

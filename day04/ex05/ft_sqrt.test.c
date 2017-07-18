@@ -6,7 +6,7 @@
 /*   By: gchojnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 12:48:12 by gchojnac          #+#    #+#             */
-/*   Updated: 2017/07/11 17:17:13 by gchojnac         ###   ########.fr       */
+/*   Updated: 2017/07/17 10:46:31 by gchojnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,25 @@
 
 int		ft_sqrt(int nb)
 {
-	float		guess[2];
+	int	search;
 
-	guess[0] = nb / 2;
-	guess[1] = 0.5 * (guess[0] + (nb / guess[0]));
-	if (guess[0] != guess[1])
+	search = 0;
+	if (nb < 0)
+		return (0);
+	else
 	{
-		while (guess[1] != guess[0])
+		while (search * search < nb)
 		{
-			printf("1 = %f \n", guess[1]);
-			printf("0 = %f \n", guess[0]);
-			guess[1] = 0.5 * (guess[0] + (nb / guess[0]));
-			printf("\n");
-			guess[0] = guess[1];
-			guess[1] = 0.5 * (guess[0] + (nb / guess[0]));
+			search++;
 		}
+		return ((search * search == nb) ? search : 0);
 	}
-	return (guess[0]);
 }
 
 int		main(void)
 {
-	printf("%d", ft_sqrt(2147483647));
+	printf("%d\n", ft_sqrt(25));
+	printf("%d\n", ft_sqrt(625));
+	printf("%d\n", ft_sqrt(627));
 	return (0);
 }
