@@ -6,7 +6,7 @@
 /*   By: gchojnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 21:09:55 by gchojnac          #+#    #+#             */
-/*   Updated: 2017/07/19 14:57:16 by gchojnac         ###   ########.fr       */
+/*   Updated: 2017/07/20 17:42:12 by gchojnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,11 @@ char	**ft_split_whitespaces(char *str)
 	char	*word;
 	char	**mem;
 
+	while (*str == ' ' || (*str <= 13 && *str >= 7))
+		str++;
 	if (*str == 0)
 		return (0);
-	to_return = malloc(sizeof(char *) * (count_words(str) + 1));
-	if (to_return == NULL)
+	if ((to_return = malloc(sizeof(char *) * (count_words(str) + 1))) == NULL)
 		return (0);
 	mem = to_return;
 	while (*str != 0)

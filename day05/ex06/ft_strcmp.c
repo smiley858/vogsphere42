@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gchojnac <gchojnac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gchojnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/08 08:03:14 by gchojnac          #+#    #+#             */
-/*   Updated: 2017/07/23 22:02:32 by gchojnac         ###   ########.fr       */
+/*   Created: 2017/07/16 21:32:30 by gchojnac          #+#    #+#             */
+/*   Updated: 2017/07/17 13:25:51 by gchojnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-void	rush00(int x, int y);
-
-int		main(int argc, char **argv)
+int		ft_strcmp(char *str1, char *str2)
 {
-	(void)argc;
-	rush00(atoi(argv[1]), atoi(argv[2]));
-	return (0);
+	while (*str1 == *str2)
+	{
+		if (*str1 == 0 && *str2 == 0)
+			return (0);
+		str1++;
+		str2++;
+	}
+	return (*str1 - *str2);
 }

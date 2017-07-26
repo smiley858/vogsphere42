@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
+/*   ft_print_words_tables.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gchojnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/18 14:33:09 by gchojnac          #+#    #+#             */
-/*   Updated: 2017/07/20 18:49:40 by gchojnac         ###   ########.fr       */
+/*   Created: 2017/07/19 15:03:30 by gchojnac          #+#    #+#             */
+/*   Updated: 2017/07/20 16:49:17 by gchojnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+void	ft_putchar(char c);
 
-int		ft_ultimate_range(int **range, int min, int max)
+void	ft_putstr(char *str)
 {
-	int		size;
+	while (*str != 0)
+	{
+		ft_putchar(*str);
+		str++;
+	}
+}
+
+void	ft_print_words_tables(char **tab)
+{
 	int		index;
 
-	size = max - min;
-	*range = 0;
-	if (size <= 0)
-		return (0);
-	if ((*range = malloc(size * sizeof(int))) == 0)
-		return (0);
 	index = 0;
-	while (index < size)
+	while (tab[index] != 0)
 	{
-		range[0][index] = min + index;
+		ft_putstr(tab[index]);
+		ft_putchar('\n');
 		index++;
 	}
-	return (size);
 }
