@@ -6,7 +6,7 @@
 /*   By: gchojnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 21:49:20 by gchojnac          #+#    #+#             */
-/*   Updated: 2017/07/20 17:44:15 by gchojnac         ###   ########.fr       */
+/*   Updated: 2017/07/26 20:49:04 by gchojnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int		main(int argc, char **argv)
 	{
 		index = 0;
 		words = ft_split_whitespaces(argv[1]);
-		if (words == 0)
-			return (0);
 		while (words[index] != 0)
 		{
 			printf("%s\n", words[index]);

@@ -6,12 +6,11 @@
 /*   By: gchojnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 18:38:56 by gchojnac          #+#    #+#             */
-/*   Updated: 2017/07/20 17:32:16 by gchojnac         ###   ########.fr       */
+/*   Updated: 2017/07/26 18:18:34 by gchojnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 int		ft_strlen(char *str)
 {
@@ -51,7 +50,7 @@ char	*ft_concat_params(int argc, char **argv)
 	int		index;
 	char	*str;
 
-	if (argc == 0)
+	if (argc <= 1)
 		return (0);
 	index = 0;
 	sum = 0;

@@ -6,7 +6,7 @@
 /*   By: gchojnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 13:30:25 by gchojnac          #+#    #+#             */
-/*   Updated: 2017/07/18 14:34:43 by gchojnac         ###   ########.fr       */
+/*   Updated: 2017/07/26 12:25:31 by gchojnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,15 @@ int		main(int argc, char **argv)
 	printf("range of size: %d\n", (ft_atoi(argv[2]) - ft_atoi(argv[1])));
 	fflush(stdout);
 	range = ft_range(ft_atoi(argv[1]), ft_atoi(argv[2]));
-	while (index < (ft_atoi(argv[2]) - ft_atoi(argv[1])))
+	if (index < (ft_atoi(argv[2]) - ft_atoi(argv[1])))
+		while (index < (ft_atoi(argv[2]) - ft_atoi(argv[1])))
+		{
+			printf("%d ", range[index]);
+			index++;
+		}
+	else
 	{
-		printf("%d ", range[index]);
-		index++;
+		printf("erreur de taille\n");
 	}
 	return (0);
 }
