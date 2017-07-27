@@ -6,7 +6,7 @@
 /*   By: rbarbero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/24 11:00:56 by rbarbero          #+#    #+#             */
-/*   Updated: 2017/07/26 02:35:09 by gchojnac         ###   ########.fr       */
+/*   Updated: 2017/07/26 19:56:22 by gchojnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../includes/board.h"
 #include "../includes/resolve.h"
 #include "../includes/import_matrix.h"
+#include "../includes/free.h"
 
 void	multi_map(int argc, char **argv)
 {
@@ -34,6 +35,7 @@ void	multi_map(int argc, char **argv)
 			else
 				print_result(board, done);
 		}
+		free_matrix(board);
 		i++;
 	}
 }
@@ -52,6 +54,7 @@ int		main(int argc, char **argv)
 		else
 			print_result(board, done);
 	}
+	free_matrix(board);
 	if (argc > 2)
 		multi_map(argc, argv);
 	return (0);

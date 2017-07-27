@@ -6,7 +6,7 @@
 /*   By: gchojnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/24 13:02:27 by gchojnac          #+#    #+#             */
-/*   Updated: 2017/07/25 12:28:51 by gchojnac         ###   ########.fr       */
+/*   Updated: 2017/07/26 19:56:50 by gchojnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,5 @@ typedef struct	s_coord {
 	int		i_row;
 	int		i_col;
 }				t_coord;
-
-t_board			*t_board_create(char **tab, int width, int height);
 
 #endif

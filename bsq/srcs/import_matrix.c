@@ -6,7 +6,7 @@
 /*   By: rbarbero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/24 11:04:02 by rbarbero          #+#    #+#             */
-/*   Updated: 2017/07/26 02:08:33 by gchojnac         ###   ########.fr       */
+/*   Updated: 2017/07/26 18:13:56 by rbarbero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,34 +37,35 @@ int		list_to_tab(t_board *board, t_list *list, int width)
 		board->tab[0][i] = *((char *)list->data);
 		list = list->next;
 	}
-	ft_list_clear(&list);
+	ft_list_clear(&tmp);
 	return (1);
 }
 
 int		import_parameters(int fd, t_board *board)
 {
-	char	line[13];
+	char	line[14];
 	int		count;
 	int		i;
 	int		ret_read;
 
 	count = 0;
-	i = 0;
-	board->height = 0;
+	i = -1;
 	while ((ret_read = read(fd, &line[count++], 1)))
-		if (line[count - 1] == '\n')
+		if (line[count - 1] == '\n' || count > 13)
 			break ;
-	if (ret_read < 0)
-		return (0);
-	if (count < 5)
+	if (ret_read < 0 || count < 5 || count > 13)
 		return (0);
 	count--;
 	board->char_full = line[--count];
 	board->char_obs = line[--count];
 	board->char_empty = line[--count];
-	while (i < count && line[i] >= '0' && line[i] <= '9')
-		board->height = board->height * 10 + (line[i++] - '0');
-	if (!board->height)
+	while (++i < count)
+		if (line[i] >= '0' && line[i] <= '9')
+			board->height = board->height * 10 + (line[i] - '0');
+		else
+			return (0);
+	if (!board->height || board->char_obs == board->char_full || board->char_obs
+			== board->char_empty || board->char_full == board->char_empty)
 		return (0);
 	return (1);
 }
@@ -80,7 +81,8 @@ int		import_first_line(int fd, t_board *board)
 	count = 0;
 	while ((ret_read = read(fd, &buf, 1)))
 	{
-		ptr = malloc(sizeof(char));
+		if (!(ptr = malloc(sizeof(char))))
+			return (0);
 		*ptr = buf;
 		if (buf == '\n')
 			break ;
@@ -114,9 +116,9 @@ int		import_rest_matrix(int fd, t_board *board)
 		read(fd, &c, 1);
 		if (c == '\n')
 			count++;
-		else
+		if (c != '\n' || (count == board->height && read(fd, &c, 1) > 0))
 			return (0);
-		if (count == board->height)
+		else if (count == board->height)
 			break ;
 	}
 	if (ret_read < 0 || count != board->height)
@@ -133,6 +135,8 @@ t_board	*import_matrix(int ac, char **av, int choice)
 
 	if (!(board = malloc(sizeof(t_board))))
 		return (0);
+	board->height = 0;
+	board->width = 0;
 	if (ac < 2)
 		fd = 0;
 	else if ((fd = open(av[choice], O_RDONLY)) < 0)

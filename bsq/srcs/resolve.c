@@ -6,7 +6,7 @@
 /*   By: gchojnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/24 12:49:51 by gchojnac          #+#    #+#             */
-/*   Updated: 2017/07/26 02:20:41 by gchojnac         ###   ########.fr       */
+/*   Updated: 2017/07/26 19:59:51 by gchojnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ t_coord		*max_on_board(t_int_board *res)
 	t_coord		*to_return;
 
 	r = res->height;
-	to_return = malloc(sizeof(t_coord));
+	if (!(to_return = malloc(sizeof(t_coord))))
+		return (0);
 	to_return->data = -1;
 	while (--r > 0)
 	{
@@ -101,5 +102,8 @@ t_coord		*resolve(t_board *board)
 	if (populate_res(board, &res) == 0)
 		return (0);
 	max_entry = max_on_board(&res);
+	while (--i >= 0)
+		free(res.tab[i]);
+	free(res.tab);
 	return (max_entry);
 }

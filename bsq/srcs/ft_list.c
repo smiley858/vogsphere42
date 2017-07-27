@@ -6,7 +6,7 @@
 /*   By: rbarbero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/24 11:54:16 by rbarbero          #+#    #+#             */
-/*   Updated: 2017/07/24 21:12:30 by rbarbero         ###   ########.fr       */
+/*   Updated: 2017/07/26 18:34:53 by rbarbero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	ft_list_clear(t_list **begin_list)
 	while (current)
 	{
 		next = current->next;
+		free(current->data);
 		free(current);
 		current = next;
 	}
