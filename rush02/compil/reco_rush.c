@@ -6,13 +6,11 @@
 /*   By: gchojnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/23 18:39:25 by gchojnac          #+#    #+#             */
-/*   Updated: 2017/07/23 23:05:34 by gchojnac         ###   ########.fr       */
+/*   Updated: 2017/07/23 23:33:32 by rbaraud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush02.h"
-#include "test_sheet_rush00.h"
-#include <stdio.h>
+#include "reco_rush.h"
 
 int		get_width(char **tab)
 {
@@ -34,27 +32,42 @@ int		get_height(char **tab)
 	return (index);
 }
 
-void	recognize(char **tab)
+void	ft_display(int i)
 {
-	int		nb_param1;
-	int		nb_param2;
-	int		rushes[5];
-
-	nb_param1 = get_width(tab);
-	nb_param2 = get_height(tab);
-	rushes[0] = (is_rush00(tab, nb_param1, nb_param2)) ? 1 : 0;
-	if (rushes[0])
+	if (rushes[i])
 	{
 		ft_putstr("c'est la colle0");
-		ft_putnbr(0);
+		ft_putnbr(i);
 		ft_putstr(" [");
 		ft_putnbr(nb_param1);
 		ft_putstr("] [");
 		ft_putnbr(nb_param2);
 		ft_putstr("] \n");
 	}
-	else
+}
+
+void	recognize(char **tab)
+{
+	int		rushes[5];
+	int		i;
+	int		sum;
+
+	rushes[0] = (is_rush00(tab, get_width(tab), get_hight(tab))) ? 1 : 0;
+	rushes[1] = (is_rush01(tab, get_width(tab), get_hight(tab))) ? 1 : 0;
+	rushes[2] = (is_rush02(tab, get_width(tab), get_hight(tab))) ? 1 : 0;
+	rushes[3] = (is_rush03(tab, get_width(tab), get_hight(tab))) ? 1 : 0;
+	rushes[4] = (is_rush04(tab, get_width(tab), get_hight(tab))) ? 1 : 0;
+	i = 0;
+	sum = 0;
+	while (i < 5)
 	{
-		ft_putstr("Aucune");
+		if (rushes[i])
+		{
+			ft_display(i);
+			sum++;
+		}
+		i++;
 	}
+	if (!sum)
+		ft_putstr("aucune\n");
 }
